@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Walk-forward 樣本外驗證 · AI 零股實驗日誌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root=".." data-page="concept">
+<main>
+  <p class="page-kicker">觀念庫 · WF</p>
+  <h1>Walk-forward 樣本外驗證（Walk-forward Validation）</h1>
+
+  <section id="oneline">
+    <h2><span class="sec-no">01</span>一句話定義</h2>
+    <p class="summary-line">用過去訓練、在沒看過的未來考試，一段一段往前滾動。</p>
+  </section>
+
+  <section id="why">
+    <h2><span class="sec-no">02</span>為什麼系統需要它</h2>
+    <p>股價有時間順序。如果像一般機器學習那樣把資料隨機打散切訓練集與測試集，模型會「偷看到未來」，回測成績漂亮、實戰卻失靈。本系統每次執行都把最近一年多切成 6 折：每折只用該折之前的資料訓練，再預測之後約兩個月，藉此估計模型在真實時間軸上的表現。</p>
+  </section>
+
+  <section id="how">
+    <h2><span class="sec-no">03</span>怎麼看數字</h2>
+    <div class="rule">一折算「有效」：<strong>測試 IC &gt; 0.02</strong> 且 <strong>前後 20% 價差 &gt; 0</strong><br>整體可信：有效折數 <strong>≥ 4/6</strong>，且最近一折不為負</div>
+    <p>重點不是平均值，而是<strong>穩定度</strong>：6 折裡有幾折有效、最近一折表現如何。平均 IC 被某一段大行情拉高時，平均值會騙人。</p>
+  </section>
+
+  <section id="example">
+    <h2><span class="sec-no">04</span>系統裡的實例</h2>
+    <p>在 <a href="../days/2026-11-10.html">2026/11/10 的日誌</a>中，ResNet-18 只有 <span class="num">1/6</span> 折有效；LightGBM 6 折平均 IC <span class="num">0.0173</span>，但最近一折（08/31~10/30）為 <span class="num down">-0.0437</span>。依上方門檻，兩者都不算可信，因此當天日誌的「模型健康度」段落加上了警示。</p>
+  </section>
+
+  <section id="pitfall">
+    <h2><span class="sec-no">05</span>常見誤解</h2>
+    <ul>
+      <li>「驗證 IC 很高就好」：驗證集被拿來決定何時停止訓練，本身已經被「用過」，要看的是測試 IC。</li>
+      <li>「折數越多越好」：每折測試期太短（例如只有幾天）會讓 IC 雜訊很大，本系統每折約兩個月。</li>
+      <li>「walk-forward 通過就一定賺錢」：它只說明過去一段時間有預測力，市場結構改變時仍可能失效。</li>
+    </ul>
+  </section>
+</main>
+<script src="../data/catalog.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

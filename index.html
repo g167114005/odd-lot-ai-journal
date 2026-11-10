@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 零股實驗日誌</title>
+  <meta name="description" content="把自建台股零股 AI 交易系統的每日輸出，整理成看得懂的日誌與觀念庫。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-root="." data-page="home">
+<main>
+  <div class="hero">
+    <p class="page-kicker">TAIWAN ODD-LOT · AI AGENT LOG</p>
+    <h1>AI 零股實驗日誌</h1>
+    <p>一套在筆電上跑的台股零股 AI 交易系統，每天輸出幾千行紀錄。這裡把它整理成人看得懂的日誌：系統判斷了什麼、模型可不可信、我實際怎麼做。所有頁面都由 AI 依照 <a href="https://github.com/g167114005/odd-lot-ai-journal/blob/main/CLAUDE.md">CLAUDE.md</a> 的規則產生。</p>
+  </div>
+
+  <section id="days">
+    <h2><span class="sec-no">LOG</span>每日日誌</h2>
+    <ul class="entry-list" id="day-list"></ul>
+  </section>
+
+  <section id="concepts">
+    <h2><span class="sec-no">WIKI</span>觀念庫</h2>
+    <ul class="entry-list" id="concept-list"></ul>
+    <p class="check-title">待寫名詞</p>
+    <ul class="tag-list" id="todo-list"></ul>
+  </section>
+</main>
+<script src="data/catalog.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- 觀念頁模板：複製成 concepts/<slug>.html 後，把所有 {{ }} 換掉。段落 id 與順序不可改（CLAUDE.md 第 5 節） -->
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{名詞}} · AI 零股實驗日誌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root=".." data-page="concept">
+<main>
+  <p class="page-kicker">觀念庫 · {{縮寫}}</p>
+  <h1>{{中文名稱（English）}}</h1>
+
+  <section id="oneline">
+    <h2><span class="sec-no">01</span>一句話定義</h2>
+    <p class="summary-line">{{≤ 30 字}}</p>
+  </section>
+
+  <section id="why">
+    <h2><span class="sec-no">02</span>為什麼系統需要它</h2>
+    <p>{{}}</p>
+  </section>
+
+  <section id="how">
+    <h2><span class="sec-no">03</span>怎麼看數字</h2>
+    <div class="rule">{{判讀門檻}}</div>
+  </section>
+
+  <section id="example">
+    <h2><span class="sec-no">04</span>系統裡的實例</h2>
+    <p>{{引用某篇日誌的真實數字，並連到 ../days/YYYY-MM-DD.html}}</p>
+  </section>
+
+  <section id="pitfall">
+    <h2><span class="sec-no">05</span>常見誤解</h2>
+    <ul><li>{{}}</li></ul>
+  </section>
+</main>
+<script src="../data/catalog.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

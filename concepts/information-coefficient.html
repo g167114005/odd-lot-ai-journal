@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>資訊係數（IC） · AI 零股實驗日誌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root=".." data-page="concept">
+<main>
+  <p class="page-kicker">觀念庫 · IC</p>
+  <h1>資訊係數（IC, Information Coefficient）</h1>
+
+  <section id="oneline">
+    <h2><span class="sec-no">01</span>一句話定義</h2>
+    <p class="summary-line">模型排的名次，和之後真實漲跌的名次有多像。</p>
+  </section>
+
+  <section id="why">
+    <h2><span class="sec-no">02</span>為什麼系統需要它</h2>
+    <p>系統每天要從 150 檔中挑出前段班，真正重要的是「排名對不對」，而不是猜中每檔漲幾元。IC 就是每天把模型分數與之後實際報酬做等級相關（Spearman 相關係數），再把每天的值平均，用來比較不同模型。</p>
+  </section>
+
+  <section id="how">
+    <h2><span class="sec-no">03</span>怎麼看數字</h2>
+    <div class="rule">IC 範圍 −1 ~ +1。本系統門檻：<strong>IC &gt; 0.02</strong> 才算有預測力<br>參考：0.05 已屬不錯；長期穩定 &gt; 0.1 在實務上非常少見</div>
+    <p>IC 要搭配「前後 20% 價差」一起看：分數最高 20% 的股票，平均報酬是否真的贏過最低 20%。兩者同時為正，才代表排名能轉成報酬。</p>
+  </section>
+
+  <section id="example">
+    <h2><span class="sec-no">04</span>系統裡的實例</h2>
+    <p><a href="../days/2026-11-10.html">2026/11/10</a> 的 walk-forward 結果中，三個樹模型最近一折的 IC 都是負的（LightGBM <span class="num down">-0.0437</span>、CatBoost <span class="num down">-0.0603</span>、XGBoost <span class="num down">-0.1058</span>），表示這兩個月模型排在前面的股票，表現反而偏差。</p>
+  </section>
+
+  <section id="pitfall">
+    <h2><span class="sec-no">05</span>常見誤解</h2>
+    <ul>
+      <li>「IC 0.03 太小，沒用」：選股的 IC 本來就很低，關鍵是長期穩定為正。</li>
+      <li>「IC 和準確率（Accuracy）一樣」：準確率看分類對不對，IC 看排序；分類準確率高不代表排名有用。</li>
+    </ul>
+  </section>
+</main>
+<script src="../data/catalog.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

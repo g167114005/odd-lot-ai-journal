@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>V 轉低點與 W 底右腳 · AI 零股實驗日誌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root=".." data-page="concept">
+<main>
+  <p class="page-kicker">觀念庫 · V / W</p>
+  <h1>V 轉低點與 W 底右腳（V-reversal &amp; Double Bottom）</h1>
+
+  <section id="oneline">
+    <h2><span class="sec-no">01</span>一句話定義</h2>
+    <p class="summary-line">大盤跌深後，最常見的兩種「止跌」走法。</p>
+  </section>
+
+  <section id="why">
+    <h2><span class="sec-no">02</span>為什麼系統需要它</h2>
+    <p>「一萬元加碼」功能要回答的是「現在是不是相對低點」。這個判斷與每天的選股模型分開：先用大盤型態規則判斷是否出現轉折，再用獨立的 LightGBM 轉折模型給機率，最後才決定加碼哪幾檔。</p>
+  </section>
+
+  <section id="how">
+    <h2><span class="sec-no">03</span>怎麼看數字</h2>
+    <div class="rule"><strong>V 轉低點</strong>（5 條件全部成立）：自 60 日高點跌 ≤ −7%；低點出現在 2~8 日前；自低點反彈 ≥ 3%；收盤站上 5 日線且 5 日線上彎；RSI 從 &lt;35 回升到 ≥45</div>
+    <div class="rule"><strong>W 底右腳</strong>：近 80 日出現兩個相近低點，且目前位於第二個低點之後</div>
+    <p>兩種型態都沒成立時，若轉折模型機率 ≥ 55% 仍可考慮；否則結論為觀望。</p>
+  </section>
+
+  <section id="example">
+    <h2><span class="sec-no">04</span>系統裡的實例</h2>
+    <p><a href="../days/2026-11-10.html">2026/11/10</a>：跌深 <span class="num down">-20.3%</span>、反彈 <span class="num up">+4.9%</span> 兩項成立，但低點才出現 1 天、RSI 只回到 33，V 轉 5 項只過 2 項；W 底也沒有雛形，因此結論為觀望。</p>
+  </section>
+
+  <section id="pitfall">
+    <h2><span class="sec-no">05</span>常見誤解</h2>
+    <ul>
+      <li>「跌越多越該買」：跌深只是 V 轉的第一個條件，沒有止跌確認就買，常會買在半山腰。</li>
+      <li>「等型態確認一定會錯過低點」：會。規則的目的是用少賺一段換取較少的假訊號。</li>
+    </ul>
+  </section>
+</main>
+<script src="../data/catalog.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

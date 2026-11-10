@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>關於系統 · AI 零股實驗日誌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-root="." data-page="about">
+<main>
+  <p class="page-kicker">ABOUT</p>
+  <h1>關於這套系統與這個網站</h1>
+
+  <section>
+    <h2><span class="sec-no">01</span>交易系統</h2>
+    <ul>
+      <li>本機 Jupyter notebook（v6.5），筆電 GPU 訓練；標的池 150 檔台股，以 1 股為單位交易零股。</li>
+      <li>每天執行：資料更新 → walk-forward 驗證多種模型（樹模型、ResNet、PatchTST、Informer、GNN…）→ 回放比較策略 → 依實際成交重建持倉並做法遵檢核 → 大盤轉折判斷與一萬元加碼建議 → 產生 PDF 報告。</li>
+      <li>交易建議由程式產生；實際成交再回填系統，形成閉環。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="sec-no">02</span>網站怎麼產生</h2>
+    <p>Agentic AI 的分工：<strong>我</strong>提供當天的系統輸出摘錄（<code>raw/</code>），<strong>AI</strong> 讀 <code>CLAUDE.md</code> 員工手冊後，複製模板、填入固定段落、更新目錄並自我檢查。我只負責驗收與寫「我的筆記」。</p>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th>步驟</th><th>誰做</th><th>產出</th></tr></thead>
+      <tbody>
+        <tr><td>跑交易系統、摘錄輸出</td><td>我</td><td>raw/YYYY-MM-DD.md</td></tr>
+        <tr><td>依規則產生日誌、更新目錄</td><td>AI</td><td>days/*.html、data/catalog.js</td></tr>
+        <tr><td>補寫觀念頁</td><td>AI（我指定名詞）</td><td>concepts/*.html</td></tr>
+        <tr><td>驗收、寫筆記、上傳</td><td>我</td><td>GitHub Pages</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span class="sec-no">03</span>隱私與免責</h2>
+    <p>這是真實帳戶的實驗紀錄，因此網站只公開檔數與百分比，不公開任何帳戶金額。內容僅為個人學習與課程作業，不構成投資建議。</p>
+  </section>
+</main>
+<script src="data/catalog.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

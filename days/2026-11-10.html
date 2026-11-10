@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-11-10 · AI 零股實驗日誌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root=".." data-page="day" data-date="2026-11-10">
+<main>
+  <p class="page-kicker" data-fill="date">下單日</p>
+  <h1>跌深兩成仍未見轉折，一萬元先留著</h1>
+
+  <section id="summary">
+    <h2><span class="sec-no">01</span>今日一句話</h2>
+    <p class="summary-line"><span class="verdict verdict--hold">觀望</span> 大盤跌深 20.3%，但止跌型態尚未成立，加碼資金先不動。</p>
+  </section>
+
+  <section id="market">
+    <h2><span class="sec-no">02</span>大盤與轉折判斷</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><span class="kpi__label">加權指數收盤（11/09）</span><span class="kpi__value num">41,661.70</span></div>
+      <div class="kpi"><span class="kpi__label">距 60 日高點</span><span class="kpi__value num down">-20.3%</span></div>
+      <div class="kpi"><span class="kpi__label">自低點反彈</span><span class="kpi__value num up">+4.9%</span></div>
+      <div class="kpi"><span class="kpi__label">轉折模型機率</span><span class="kpi__value num">22%</span></div>
+    </div>
+    <p class="check-title"><a class="term" href="../concepts/v-reversal-w-bottom.html">V 轉低點</a>：未成立（2/5）</p>
+    <ul class="checklist">
+      <li class="ok">跌深：自 60 日高點 <span class="num down">-20.3%</span>（門檻 ≤ -7%）</li>
+      <li class="no">低點出現時間：1 日前（需 2~8 日）</li>
+      <li class="ok">自低點反彈 <span class="num up">+4.9%</span>（門檻 ≥ 3%）</li>
+      <li class="no">收盤站上 5 日線且 5 日線上彎</li>
+      <li class="no">RSI 自 19 回升到 33（需回到 ≥ 45）</li>
+    </ul>
+    <p class="check-title">W 底右腳：未成立（0/1）</p>
+    <ul class="checklist">
+      <li class="no">近 80 日找不到兩個相近低點（W 底雛形）</li>
+    </ul>
+    <div class="callout callout--warn">轉折模型（LightGBM，獨立於選股模型）樣本外 AUC 僅 0.55，判斷力有限；本日結論以型態與急跌規則為主，模型機率只作參考。</div>
+  </section>
+
+  <section id="strategy">
+    <h2><span class="sec-no">03</span>策略</h2>
+    <p>目前鎖定：<strong class="num">lgb&amp;gnn+dTP</strong>（LightGBM＋GNN，停利觸發時若量縮低於 5 日均量，延 1 日再賣）</p>
+    <p>以 2026/05/14 ~ 11/09 行情回放 44 組策略，依報酬/回檔比排序：</p>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th>策略</th><th class="num">期間報酬</th><th class="num">最大回檔</th><th class="num">報酬/回檔比</th></tr></thead>
+      <tbody>
+        <tr class="is-chosen"><td>gnn+dBoth（回放第 1）</td><td class="num up">+7.40%</td><td class="num down">-19.61%</td><td class="num">0.38</td></tr>
+        <tr><td>DRL+wide（實驗）</td><td class="num up">+6.08%</td><td class="num down">-20.32%</td><td class="num">0.30</td></tr>
+        <tr><td>gnn+wide</td><td class="num up">+5.77%</td><td class="num down">-19.70%</td><td class="num">0.29</td></tr>
+        <tr class="is-ref"><td>等權持有標的池（參考）</td><td class="num">-1.99%</td><td class="num">-21.95%</td><td class="num">-0.09</td></tr>
+        <tr class="is-ref"><td>O：舊版規則（10/06 起實際使用）</td><td class="num">-20.06%</td><td class="num">-29.65%</td><td class="num">-0.68</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout">回放冠軍是 gnn+dBoth，但系統仍沿用先前鎖定的策略；只用半年行情挑選容易過度擬合，系統建議每月重跑比較。前三名中有兩組是 GNN；與舊版規則 O 相比，最大回檔淺了約 10 個百分點。</div>
+  </section>
+
+  <section id="portfolio">
+    <h2><span class="sec-no">04</span>持倉檢核</h2>
+    <p>依實際成交重建（最後成交日 11/09）。11/09 系統建議 10 檔，實際交易 8 檔。</p>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th>檢核項目</th><th class="num">數值</th><th>規範</th><th>結果</th></tr></thead>
+      <tbody>
+        <tr><td>持股檔數</td><td class="num">20 檔</td><td>20~30 檔</td><td>✅ 通過</td></tr>
+        <tr><td>現金比例</td><td class="num">1.26%</td><td>&lt; 25%</td><td>✅ 通過</td></tr>
+        <tr><td>台積電權重</td><td class="num">0.00%</td><td>≤ 25%</td><td>✅ 通過</td></tr>
+        <tr><td>其他單股最大權重</td><td class="num">7.37%（2892）</td><td>≤ 10%</td><td>✅ 通過</td></tr>
+        <tr><td>標的池外持股</td><td class="num">2 檔</td><td>例外允許</td><td>✅ 通過</td></tr>
+        <tr><td>Active Share</td><td class="num">—</td><td>≥ 20%</td><td>⚠️ 未提供基準</td></tr>
+      </tbody>
+    </table></div>
+    <p>持股檔數剛好在下限 20 檔，之後賣出時要留意不要跌破範圍。</p>
+  </section>
+
+  <section id="addon">
+    <h2><span class="sec-no">05</span>一萬元加碼判斷</h2>
+    <p><span class="verdict verdict--hold">觀望</span> V 轉與 W 底都未成立，模型機率 22% 也遠低於 55% 門檻。這 10,000 元先留著，等到以下任一條件出現：</p>
+    <ul>
+      <li>V 轉：低點出現 2~8 日、反彈 ≥ 3%、RSI 回到 45 以上</li>
+      <li>W 底：出現第二個相近低點（右腳）</li>
+      <li>轉折模型機率升到 55% 以上</li>
+    </ul>
+    <p>今日有賣出訊號、排除加碼：6274、1815、8358、1802、4938、2603、5880、2412、2801、2892。</p>
+    <p class="check-title">假設性參考清單（若仍要投入；系統不建議進場）</p>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th>代碼</th><th>名稱</th><th class="num">評分排名</th><th class="num">股數</th><th class="num">金額(含費)</th><th class="num">加碼後權重</th></tr></thead>
+      <tbody>
+        <tr><td class="num">6505</td><td>台塑化</td><td class="num">1</td><td class="num">32</td><td class="num">2,833</td><td class="num">9.44%</td></tr>
+        <tr><td class="num">3081</td><td>聯亞</td><td class="num">9</td><td class="num">1</td><td class="num">1,928</td><td class="num">7.97%</td></tr>
+        <tr><td class="num">2360</td><td>致茂</td><td class="num">38</td><td class="num">4</td><td class="num">5,007</td><td class="num">9.31%</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="model">
+    <h2><span class="sec-no">06</span>模型健康度</h2>
+    <p><a class="term" href="../concepts/walk-forward.html">Walk-forward 樣本外驗證</a>（6 折）：ResNet-18 僅 1/6 折有效；樹模型中 LightGBM 平均測試<a class="term" href="../concepts/information-coefficient.html">資訊係數（IC, Information Coefficient）</a> 0.0173 最高，但 6 折中有 3 折為負。</p>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th>模型</th><th class="num">6 折平均 IC</th><th class="num">最近一折 IC</th></tr></thead>
+      <tbody>
+        <tr><td>LightGBM</td><td class="num">0.0173</td><td class="num down">-0.0437</td></tr>
+        <tr><td>CatBoost</td><td class="num">0.0103</td><td class="num down">-0.0603</td></tr>
+        <tr><td>XGBoost</td><td class="num">-0.0004</td><td class="num down">-0.1058</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout--warn">有效折數未過半，且最近一折（2026/08/31~10/30）三個樹模型 IC 全部為負：近兩個月的行情，模型的排名幾乎沒有預測力。最重要的特徵是大盤 20 日波動與個股 20 日波動，代表模型目前主要依賴「波動」訊號。</div>
+  </section>
+
+  <section id="notes">
+    <h2><span class="sec-no">07</span>我的筆記</h2>
+    <p class="placeholder">（由作者填寫：當天實際操作與人工判斷。AI 不代寫。）</p>
+  </section>
+
+  <p class="source">資料來源：raw/2026-11-10.md</p>
+</main>
+<script src="../data/catalog.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

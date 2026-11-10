@@ -1,0 +1,81 @@
+<!doctype html>
+<!-- 每日日誌模板：複製成 days/YYYY-MM-DD.html 後，把所有 {{ }} 換掉。段落 id 與順序不可改（CLAUDE.md 第 4 節） -->
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{YYYY-MM-DD}} · AI 零股實驗日誌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root=".." data-page="day" data-date="{{YYYY-MM-DD}}">
+<main>
+  <p class="page-kicker" data-fill="date">下單日</p>
+  <h1>{{標題：與 catalog.js 的 title 相同}}</h1>
+
+  <section id="summary">
+    <h2><span class="sec-no">01</span>今日一句話</h2>
+    <p class="summary-line"><span class="verdict verdict--hold">{{觀望|加碼|減碼}}</span> {{≤ 40 字}}</p>
+  </section>
+
+  <section id="market">
+    <h2><span class="sec-no">02</span>大盤與轉折判斷</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><span class="kpi__label">加權指數收盤（{{日期}}）</span><span class="kpi__value num">{{}}</span></div>
+      <div class="kpi"><span class="kpi__label">距 60 日高點</span><span class="kpi__value num down">{{}}</span></div>
+      <div class="kpi"><span class="kpi__label">轉折模型機率</span><span class="kpi__value num">{{}}</span></div>
+    </div>
+    <p class="check-title">V 轉低點：{{成立|未成立}}</p>
+    <ul class="checklist">
+      <li class="ok">{{條件}}</li>
+      <li class="no">{{條件}}</li>
+    </ul>
+    <p class="check-title">W 底右腳：{{成立|未成立}}</p>
+    <ul class="checklist">
+      <li class="no">{{條件}}</li>
+    </ul>
+  </section>
+
+  <section id="strategy">
+    <h2><span class="sec-no">03</span>策略</h2>
+    <p>目前鎖定：<strong>{{策略鍵}}</strong>（{{說明}}）</p>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th>策略</th><th class="num">期間報酬</th><th class="num">最大回檔</th><th class="num">報酬/回檔比</th></tr></thead>
+      <tbody>
+        <tr class="is-chosen"><td>{{第 1 名}}</td><td class="num up">{{}}</td><td class="num down">{{}}</td><td class="num">{{}}</td></tr>
+        <tr class="is-ref"><td>等權（參考）</td><td class="num">{{}}</td><td class="num">{{}}</td><td class="num">{{}}</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="portfolio">
+    <h2><span class="sec-no">04</span>持倉檢核</h2>
+    <!-- 只放檔數與百分比；不得出現本金、現金金額、市值、成本（CLAUDE.md 第 7 節） -->
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th>檢核項目</th><th class="num">數值</th><th>規範</th><th>結果</th></tr></thead>
+      <tbody><tr><td>{{}}</td><td class="num">{{}}</td><td>{{}}</td><td>{{}}</td></tr></tbody>
+    </table></div>
+  </section>
+
+  <section id="addon">
+    <h2><span class="sec-no">05</span>一萬元加碼判斷</h2>
+    <p>{{結論與理由}}</p>
+  </section>
+
+  <section id="model">
+    <h2><span class="sec-no">06</span>模型健康度</h2>
+    <p>{{walk-forward 結果與白話解讀}}</p>
+  </section>
+
+  <section id="notes">
+    <h2><span class="sec-no">07</span>我的筆記</h2>
+    <p class="placeholder">（由作者填寫：當天實際操作與人工判斷。AI 不代寫。）</p>
+  </section>
+
+  <p class="source">資料來源：raw/{{YYYY-MM-DD}}.md</p>
+</main>
+<script src="../data/catalog.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
